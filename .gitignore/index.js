@@ -33,4 +33,4 @@ clientDiscord.on('guildMemberAdd', member => {
 }),
 
 // Connection
-clientDiscord.login("NDI5NTg1NzEwOTU0MzE1Nzk4.DaDyaQ.--W09Tbsich3OpSyjH0AMBRsO_E");
+bot.login(process.env.NDI5NTg1NzEwOTU0MzE1Nzk4.DaFR5w.qtuBWU87q7gTPv5abHumYeMlhnE);
