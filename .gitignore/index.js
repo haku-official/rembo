@@ -33,4 +33,4 @@ clientDiscord.on('guildMemberAdd', member => {
 }),
 
 // Connection
-bot.login(process.env.TOKEN);
+bot.login(process.env.BOT_TOKEN);
