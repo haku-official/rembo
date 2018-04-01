@@ -31,7 +31,7 @@ clientDiscord.on('message', message => {
             if (splitMessage.length === 2) {
                 if (message.member.voiceChannel) {
                     message.member.voiceChannel.join().then(connection => {
-                        connection.playArbitraryInput;
+                        connection.playArbitraryInput('https://www.youtube.com');
 
                         dispatcher.on('error', e => {
                             console.log(e);
