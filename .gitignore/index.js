@@ -1,31 +1,20 @@
-/* INCLURE */
-const discord = require("discord.js");
+const Discord = require('discord.js')
+const bot = new Discord.Client()
 
-/* VARIABLES */
-const clientDiscord = new discord.Client();
-const PREFIX = ">";
+bot.on('ready', function () {
+  console.log("Je suis connecté !")
+})
 
-/* EVENEMENTS */
-var dispatcher;
-
-clientDiscord.on("ready", () => {
-    console.log("Prêt à travailler !");
-});
-
-clientDiscord.on("message", message => {
-    if (message.content[0] === PREFIX) {
-        if (message.content === ">hello") {
-            //messages.reply("Yo!");
-            message.author.createDM().then(channel => {
-                channel.send('test');
-            });
-        }
-    }
-});
+bot.on('guildMemberAdd', member => {
+  member.createDM().then(channel => {
+    return channel.send('Bienvenue sur mon serveur ' + member.displayName)
+  }).catch(console.error)
+  // On pourrait catch l'erreur autrement ici (l'utilisateur a peut être désactivé les MP)
+})
 
 bot.on('message', message => {
 
-  if (message.content.startsWith('>play')) {
+  if (message.content.startsWith('!play')) {
     // On récupère le premier channel audio du serveur
     let voiceChannel = message.guild.channels
       .filter(function (channel) { return channel.type === 'voice' })
@@ -54,14 +43,6 @@ bot.on('message', message => {
   }
 
 })
-
-
-
-clientDiscord.on('guildMemberAdd', member => {
-    member.createDM().then(channel => {
-        return channel.send('Bienvenue' + member.displayName);
-    }).catch(console.error);
-}),
 
     // Connection
     bot.login(process.env.TOKEN
