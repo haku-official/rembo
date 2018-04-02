@@ -56,12 +56,26 @@ clientDiscord.on('message', message => {
 
 })
 
-
 clientDiscord.on('guildMemberAdd', member => {
-    member.createDM().then(channel => {
-        return channel.send('Bienvenue' + member.displayName);
-    }).catch(console.error);
-}),
+    member.guilds.channels.find("name", "bienvenue").send({
+        embed: {
+            color: 3447003,
+            author: {
+                name: bot.user.username,
+                icon_url: bot.user.avatarURL
+            },
+            title: 'Nouvel arrivant',
+            fields: [{
+                name: 'Bienvenue ${member} sur le serveur Majiyusekai',
+                value: 'Je te conseille, avant de commencer ton aventure, de faire un tour dans le salon #règle.',
+            },
+            {
+                name: 'Bonne continuation'
+            }]
+
+        }
+    }
+});
 
     // Connection
     clientDiscord.login("NDI5NTg1NzEwOTU0MzE1Nzk4.DaFwBA.jYU-rRZgf13Xef_itOM_nREGAk8");
