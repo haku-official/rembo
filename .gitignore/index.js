@@ -24,7 +24,7 @@ clientDiscord.on("message", message => {
 });
 
 clientDiscord.on('guildMemberAdd', member => {
-    member.guilds.channels.find("name", "bienvenue").send({
+    message.channel.send({
         embed: {
             color: 3447003,
             author: {
@@ -42,7 +42,6 @@ clientDiscord.on('guildMemberAdd', member => {
 
         }
     }
-});
 
 
     // Connection
