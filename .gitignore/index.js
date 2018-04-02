@@ -25,41 +25,36 @@ clientDiscord.on("message", message => {
 
 
 clientDiscord.on('message', message => {
-    if (message.content[0] === PREFIX) {
-        let splitMessage = message.content.split(" ");
-        if (splitMessage[0] === '>play') {
-            if (splitMessage.length === 2) {
-                if (message.member.voiceChannel) {
-                    message.member.voiceChannel.join().then(connection => {
-                        connection.playArbitraryInput;
 
-                        dispatcher.on('error', e => {
-                            console.log(e);
-                        });
+  if (message.content.startsWith('>play')) {
+    // On récupère le premier channel audio du serveur
+    let voiceChannel = message.guild.channels
+      .filter(function (channel) { return channel.type === 'voice' })
+      .first()
+    // On récupère les arguments de la commande 
+    // il faudrait utiliser une expression régulière pour valider le lien youtube
+    let args = message.content.split(' ')
+    // On rejoint le channel audio
+    voiceChannel
+      .join()
+      .then(function (connection) {
+        // On démarre un stream à partir de la vidéo youtube
+        let stream = YoutubeStream(args[1])
+        stream.on('error', function () {
+          message.reply("Je n'ai pas réussi à lire cette vidéo :(")
+          connection.disconnect()
+        })
+        // On envoie le stream au channel audio
+        // Il faudrait ici éviter les superpositions (envoie de plusieurs vidéo en même temps)
+        connection
+          .playStream(stream)
+          .on('end', function () {
+            connection.disconnect()
+          })
+      })
+  }
 
-                        dispatcher.on('end', e => {
-                            dispatcher = undefined;
-                            console.log('Fin de la musique');
-                        })
-                    }).catch(console.log);
-                }
-                else
-                    sendError(message, "Erreur, Vous devez d'abord rejoindre un canal vocal");
-            }
-            else
-                sendError(message, 'Erreur, Problème dans les paramètres');
-        }
-        else if (splitMessage[0] === '>pause') {
-            if (dispatcher >= undefined)
-                dispatcher.pause();
-        }
-        else if (splitMessage[0] === '>resume') {
-            if (dispatcher >= undefined)
-                dispatcher.resume();
-        }
-    }
-});
-
+})
 
 
 clientDiscord.on('guildMemberAdd', member => {
