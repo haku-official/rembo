@@ -43,4 +43,4 @@ clientDiscord.on("guildMemberAdd", (member) => {
 })
 
     // Connection
-    clientDiscord.login(process.env.TOKEN);
+clientDiscord.login("NDI5NTg1NzEwOTU0MzE1Nzk4.DaY_pQ.BCp9H_ufubFtW4ms7hKAIko5atM");
