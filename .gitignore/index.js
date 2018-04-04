@@ -2,7 +2,7 @@
 const discord = require("discord.js");
 
 /* VARIABLES */
-const bot = new discord.Client();
+const clientDiscord = new discord.Client();
 const PREFIX = ">";
 
 /* EVENEMENTS */
@@ -12,7 +12,7 @@ bot.on("ready", () => {
     console.log("Prêt à travailler !");
 });
 
-bot.on("message", message => {
+clientDiscord.on("message", message => {
     if (message.content[0] === PREFIX) {
         if (message.content === ">hello") {
             //messages.reply("Yo!");
@@ -23,7 +23,7 @@ bot.on("message", message => {
     }
 });
 
-bot.on("guildMemberAdd", (member) => {
+clientDiscord.on("guildMemberAdd", (member) => {
     var chBienvenue = member.guild.channels.find('id', '430789272652480512');
             if (chBienvenue != null) {
                 var embed = new Discord.RichEmbed()
@@ -36,7 +36,7 @@ bot.on("guildMemberAdd", (member) => {
     }
 })
 
-    bot.on('guildMemberAdd', member => {
+    clientDiscord.on('guildMemberAdd', member => {
     member.createDM().then(channel => {
         return channel.send('Bienvenue' + member.displayName);
     }).catch(console.error);
