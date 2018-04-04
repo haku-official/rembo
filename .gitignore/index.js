@@ -35,7 +35,7 @@ clientDiscord.on("guildMemberAdd", (member) => {
     }
 })
 
-clientDiscord.on.("guildMemberAdd", (member) => {
+clientDiscord.on("guildMemberAdd", (member) => {
     var role = member.guilds.roles.find('name','ÉTRANGER');
     member.addRole(role)
 })    
