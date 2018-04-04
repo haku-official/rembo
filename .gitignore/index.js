@@ -8,7 +8,7 @@ const PREFIX = ">";
 /* EVENEMENTS */
 var dispatcher;
 
-bot.on("ready", () => {
+clientDiscord.on("ready", () => {
     console.log("Prêt à travailler !");
 });
 
@@ -25,22 +25,21 @@ clientDiscord.on("message", message => {
 
 clientDiscord.on("guildMemberAdd", (member) => {
     var chBienvenue = member.guild.channels.find('id', '430789272652480512');
-            if (chBienvenue != null) {
-                var embed = new Discord.RichEmbed()
-                    .setColor("#ff3399")
-                    .setTitle("Bienvenue " + member.user.username);
-  
-  member.user.send(embed);
-                member.user.send(welcome);
-                chBienvenue.send("m e s s a g e    de   b i e n v e n u e      ici");
+    if (chBienvenue != null) {
+        var embed = new discord.RichEmbed()
+            .setColor("#ff3399")
+            .setTitle("Bienvenue " + member.user.username);
+
+        member.user.send(embed);
+        chBienvenue.send("m e s s a g e    de   b i e n v e n u e      ici");
     }
 })
 
-    clientDiscord.on('guildMemberAdd', member => {
+clientDiscord.on('guildMemberAdd', member => {
     member.createDM().then(channel => {
         return channel.send('Bienvenue' + member.displayName);
     }).catch(console.error);
 })
 
-    // Connection
+// Connection
 clientDiscord.login("NDI5NTg1NzEwOTU0MzE1Nzk4.DaY_pQ.BCp9H_ufubFtW4ms7hKAIko5atM");
