@@ -34,9 +34,6 @@ clientDiscord.on("guildMemberAdd", (member) => {
 
         member.user.send(embed);
         chBienvenue.send("m e s s a g e    de   b i e n v e n u e      ici");
-        
-        var role = member.guilds.roles.find("name","ÉTRANGER");
-        member.addRole(role)
     }
 })
   
