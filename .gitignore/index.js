@@ -35,6 +35,10 @@ clientDiscord.on("guildMemberAdd", (member) => {
     }
 })
   
+clientDiscord.on('guildMemberAdd', (member) => {
+    var role = member.guilds.roles.find("name","ÉTRANGER");
+    member.addRole(role)
+})    
 
 // Connection
 clientDiscord.login("NDI5NTg1NzEwOTU0MzE1Nzk4.DaY_pQ.BCp9H_ufubFtW4ms7hKAIko5atM");
