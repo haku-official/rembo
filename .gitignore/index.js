@@ -23,6 +23,15 @@ clientDiscord.on("message", message => {
     }
 });
 
+clientDiscord.on("message", message => {
+    if (message.content[0] === PREFIX) {
+        if (message.content === ">entrer") {
+            //messages.reply("Yo!");
+            var role = member.guild.roles.find('name', 'HABITANT');
+            member.addRole(role)
+        }
+    }
+});
 
 
 clientDiscord.on("guildMemberAdd", (member) => {
