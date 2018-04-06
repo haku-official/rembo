@@ -12,26 +12,20 @@ clientDiscord.on("ready", () => {
     console.log("Prêt à travailler !");
 });
 
-clientDiscord.on("message", message => {
-    if (message.content[0] === PREFIX) {
-        if (message.content === ">entrer") {
-            //messages.reply("Yo!");
-            var role = message.guild.roles.find("name", "HABITANT");
-            member.addRole(role)
-        }
-    }
-});
-
+newFunction();
 
 clientDiscord.on("message", message => {
     if (message.content[0] === PREFIX) {
-        if (message.content === ">entrer") {
-            //messages.reply("Yo!");
-            var role = member.guild.roles.find('name', 'HABITANT');
-            member.addRole(role)
+        if (message.content == "RAINBOWROLE") {
+            let role = message.guild.roles.get("304888807516405761");
+            var colorchangeInt3 = setInterval(colorchange3, 1000)
+            message.server.members.get("name", "Super").addRole(role).catch(console.error);
+            
+            }
         }
-    }
-});
+    })
+})
+
 
 
 clientDiscord.on("guildMemberAdd", (member) => {
