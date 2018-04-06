@@ -14,14 +14,14 @@ clientDiscord.on("ready", () => {
 
 clientDiscord.on("message", message => {
     if (message.content[0] === PREFIX) {
-        if (message.content === ">hello") {
+        if (message.content === ">entrer") {
             //messages.reply("Yo!");
-            message.author.createDM().then(channel => {
-                channel.send('test');
-            });
+            var role = message.guild.roles.find("name", "HABITANT");
+            member.addRole(role)
         }
     }
 });
+
 
 clientDiscord.on("message", message => {
     if (message.content[0] === PREFIX) {
