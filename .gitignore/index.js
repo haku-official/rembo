@@ -38,4 +38,4 @@ clientDiscord.on("guildMemberAdd", (member) => {
   
 
 // Connection
-clientDiscord.login("NDI5NTg1NzEwOTU0MzE1Nzk4.DaY_pQ.BCp9H_ufubFtW4ms7hKAIko5atM");
+clientDiscord.login("NDI5NTg1NzEwOTU0MzE1Nzk4.DalAJg.2QH7-uoJSUv8aodhyBEutaSRqUQ");
